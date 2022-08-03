@@ -19,8 +19,8 @@ const colorFunction = require('postcss-color-mod-function');
 const cssnano = require('cssnano');
 const easyimport = require('postcss-easy-import');
 
-const REPO = 'TryGhost/Casper';
-const REPO_READONLY = 'TryGhost/Casper';
+const REPO = 'nyandev/nyasper';
+const REPO_READONLY = 'nyandev/nyasper';
 const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
 
 function serve(done) {
@@ -63,9 +63,10 @@ function js(done) {
         src([
             // pull in lib files first so our own code can depend on it
             'assets/js/lib/*.js',
-            'assets/js/*.js'
+            'assets/js/*.js',
+            `./node_modules/fslightbox/index.js`,
         ], {sourcemaps: true}),
-        concat('casper.js'),
+        concat('nyasper.js'),
         uglify(),
         dest('assets/built/', {sourcemaps: '.'}),
         livereload()

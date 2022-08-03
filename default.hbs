@@ -9,6 +9,11 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,600,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gemunu+Libre:wght@500&display=swap" rel="stylesheet">
+
     {{!-- Theme assets - use the {asset} helper to reference styles & scripts,
     this will take care of caching and cache-busting automatically --}}
     <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
@@ -73,11 +78,10 @@
     {{!-- The global footer at the very bottom of the screen --}}
     <footer class="site-footer outer">
         <div class="inner">
-            <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
+            <section class="copyright">&copy; <a href="{{@site.url}}">{{@site.title}}</a> &amp; <a href="https://ankea.net">Ankea Media</a> 2019-{{date format="YYYY"}}</section>
             <nav class="site-footer-nav">
                 {{navigation type="secondary"}}
             </nav>
-            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
         </div>
     </footer>
 
@@ -91,15 +95,33 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-<script src="{{asset "built/casper.js"}}"></script>
+<script src="{{asset "built/nyasper.js"}}"></script>
 <script>
-$(document).ready(function () {
+$(document).ready(function ()
+{
     // Mobile Menu Trigger
-    $('.gh-burger').click(function () {
+    $('.gh-burger').click(function ()
+    {
         $('body').toggleClass('gh-head-open');
     });
+
     // FitVids - Makes video embeds responsive
     $(".gh-content").fitVids();
+
+    const images = document.querySelectorAll( '.kg-image-card img, .kg-gallery-card img' );
+
+    images.forEach( ( image ) => 
+    {
+        var wrapper = document.createElement( 'a') ;
+        wrapper.setAttribute( 'data-no-swup', '' );
+        wrapper.setAttribute( 'data-fslightbox', '' );
+        wrapper.setAttribute( 'href', image.src );
+        wrapper.setAttribute( 'aria-label', 'Click for Lightbox' );
+        image.parentNode.insertBefore( wrapper, image.parentNode.firstChild );
+        wrapper.appendChild( image );
+    });
+
+    refreshFsLightbox();
 });
 </script>
 
