@@ -52,11 +52,13 @@
             <div class="gh-head-actions">
                 <button class="gh-search" data-ghost-search>{{> "icons/search"}}</button>
                 <div class="gh-social">
-                    {{#if @site.facebook}}
-                        <a class="gh-social-link gh-social-facebook" href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
-                    {{/if}}
                     {{#if @site.twitter}}
                         <a class="gh-social-link gh-social-twitter" href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                    {{/if}}
+                    <a class="gh-social-link gh-social-instagram" href="https://www.instagram.com/neonyaparty/" title="Instagram" target="_blank" rel="noopener">{{> "icons/instagram"}}</a>
+                    <a class="gh-social-link gh-social-youtube" href="https://www.youtube.com/c/Neonya" title="YouTube" target="_blank" rel="noopener">{{> "icons/youtube"}}</a>
+                    {{#if @site.facebook}}
+                        <a class="gh-social-link gh-social-facebook" href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
                     {{/if}}
                 </div>
                 {{#if @site.members_enabled}}
@@ -78,7 +80,7 @@
     {{!-- The global footer at the very bottom of the screen --}}
     <footer class="site-footer outer">
         <div class="inner">
-            <section class="copyright">&copy; <a href="{{@site.url}}">{{@site.title}}</a> &amp; <a href="https://ankea.net">Ankea Media</a> 2019-{{date format="YYYY"}}</section>
+            <section class="copyright">&copy; 2019-{{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a><br>with <a href="https://ankea.net" target="_blank">Ankea Media</a></section>
             <nav class="site-footer-nav">
                 {{navigation type="secondary"}}
             </nav>
