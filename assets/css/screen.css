@@ -37,7 +37,7 @@ production stylesheet in assets/built/screen.css
     --color-darkgrey: #15171A;
     --color-midgrey: #738a94;
     --color-lightgrey: #f1f1f1;
-    --color-secondary-text: #979797;
+    --color-secondary-text: #d3d6db;
     --color-border: #e1e1e1;
     --color-wash: #e5eff5;
     --color-darkmode: #151719;
@@ -86,8 +86,18 @@ production stylesheet in assets/built/screen.css
     margin: 0 auto;
     max-width: 1200px;
     width: 100%;
+    padding: 0 3rem;
 }
 
+main > .inner {
+    box-shadow: 0px 2px 16px 3px rgb(0 178 187 / 76%);
+    padding-bottom: 5rem;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.neonya-wrap__post {
+    background: rgba(0, 0, 0, 0.65);
+}
 
 /* 4. Site Header
 /* ---------------------------------------------------------- */
@@ -713,6 +723,8 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
     height: 100%;
     background: var(--color-lightgrey) no-repeat center center;
     object-fit: cover;
+    border: 1px solid #ff744175;
+    border-radius: 3px;
 }
 
 .post-card.keep-ratio:not(.post-card-large):not(.post-card-full) .post-card-image {
@@ -973,7 +985,9 @@ make sure this only happens on large viewports / desktop-ish devices.
 }
 
 .page-template .article {
-    padding-top: max(12vmin, 64px);
+    padding-top: max(6vmin, 64px);
+    min-height: calc(100vh - 100px);
+    box-sizing: border-box;
 }
 
 .article-header {
@@ -1018,6 +1032,10 @@ make sure this only happens on large viewports / desktop-ish devices.
     grid-column: wide-start / wide-end;
     width: 100%;
     margin: max(6.4vmin, 40px) 0 0;
+}
+
+.gh-canvas .article-image img {
+    box-shadow: 0px 0px 10px 2px rgb(0 157 173 / 84%);
 }
 
 .image-full .article-image {
@@ -1565,10 +1583,11 @@ iframe.instagram-media + script + :not([id]) {
 
 .read-more-wrap {
     margin-top: 2.4vmin;
+    padding-bottom: 3rem;
 }
 
 .footer-cta + .read-more-wrap {
-    margin-top: max(12vmin, 72px);
+    padding-top: max(10vmin, 72px);
 }
 
 .read-more {
@@ -1738,12 +1757,13 @@ iframe.instagram-media + script + :not([id]) {
 /* ---------------------------------------------------------- */
 
 .site-footer {
-    position: relative;
-    margin: max(12vmin, 64px) 0 0 0;
     padding-top: 48px;
     padding-bottom: max(6vmin, 32px);
     color: #fff;
     background: color-mod(var(--color-darkgrey) l(-5%));
+    border-top: 1px solid rgba(0, 130, 141, 0.5);
+    z-index: 100;
+    position: relative;
 }
 
 .site-footer .inner {
@@ -1820,17 +1840,27 @@ iframe.instagram-media + script + :not([id]) {
     }
 }
 
+html body {
+    background-color: rgb(1, 3, 7);
+}
+
+.site-content {
+    background-image: url("bg_halloween.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 /* 12. Dark Mode
 /* ---------------------------------------------------------- */
 
 html.dark-mode body {
-    color: rgba(255, 255, 255, 0.75);
-    background: var(--color-darkmode);
+    color: white;
+    /* background: var(--color-darkmode); */
 }
 
 html.dark-mode img {
-    opacity: 0.9;
+    /* opacity: 0.9; */
 }
 
 html.dark-mode kbd {
@@ -1844,6 +1874,7 @@ html.dark-mode figcaption a {
 html.dark-mode .gh-head {
     background: var(--color-darkmode);
     color: #fff;
+    border-bottom: 1px solid cyan;
 }
 
 html.dark-mode .gh-burger-box {
@@ -1856,10 +1887,6 @@ html.dark-mode .site-header-content {
 
 html.dark-mode .post-card-image {
     background: var(--color-darkmode);
-}
-
-html.dark-mode :is(.post-card-tags, .post-card-meta, .article-tag a, .byline-meta-content) {
-    color: color-mod(var(--color-secondary-text) l(-22%));
 }
 
 html.dark-mode .post-card-featured {
@@ -1884,6 +1911,7 @@ html.dark-mode .author-profile-social-link:hover {
 
 html.dark-mode .article-title {
     color: #fff;
+    text-shadow: rgb(1 184 186) 0px 2px 1px;
 }
 
 html.dark-mode .article-excerpt {
@@ -1981,6 +2009,10 @@ html.dark-mode .gh-content input {
     color: color-mod(var(--color-midgrey) l(-30%));
 }
 
+.gh-content img {
+    border: 1px solid rgb(0 255 241 / 30%);
+}
+
 html.dark-mode .site-archive-header .no-image {
     color: rgba(255, 255, 255, 0.9);
     background: var(--color-darkmode);
@@ -2039,7 +2071,8 @@ html.dark-mode .footer-cta-title {
     }
     
     html.auto-color :is(.post-card-tags, .post-card-meta, .article-tag a, .byline-meta-content) {
-        color: color-mod(var(--color-secondary-text) l(-22%));
+        /* color: color-mod(var(--color-secondary-text) l(-22%)); */
+        color: #27b1bf;
     }
     
     html.auto-color .post-card-featured {
@@ -2184,17 +2217,13 @@ html.dark-mode .footer-cta-title {
     }
 }
 
-/*
+.kg-bookmark-card a.kg-bookmark-container,
+.kg-bookmark-card a.kg-bookmark-container:hover {
+    background: rgb(0 0 0 / 36%) !important;
+    border: 1px solid rgb(0 245 255 / 40%) !important;
+}
 
-Hey! You reached the end.
-
-Hope you enjoyed this CSS file, if you have any suggestions
-for improvements that might be useful for everyone who uses
-this theme, you can find the open source repository for it
-here: https://github.com/tryghost/casper
-
-Or, if you've just scrolled all the way to the bottom of the
-file to add some of your own styles. Well, you've come to
-the right place. Onward!
-
- */
+::selection {
+    background-color: #e31e86 !important;
+    /* color: #ffffff !important; */
+}

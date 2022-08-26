@@ -6,7 +6,7 @@ into the {body} tag of the default.hbs template --}}
 
 {{#post}}
 {{!-- Everything inside the #post block pulls data from the post --}}
-
+<div class="neonya-wrap neonya-wrap__post">
 <main id="site-main" class="site-main">
 <article class="article {{post_class}} {{#match @custom.post_image_style "Full"}}image-full{{else match @custom.post_image_style "=" "Small"}}image-small{{/match}}">
 
@@ -151,5 +151,5 @@ into the {body} tag of the default.hbs template --}}
 
     {{/get}}
 {{/if}}
-
+</div>
 {{/post}}
