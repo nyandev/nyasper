@@ -66,6 +66,14 @@ function img(done) {
     ], handleError(done));
 }
 
+function font(done) {
+    pump([
+        src('assets/font/*.*', {sourcemaps: false}),
+        dest('assets/built/', {sourcemaps: '.'}),
+        livereload()
+    ], handleError(done));
+}
+
 function js(done) {
     pump([
         src([
@@ -101,7 +109,7 @@ function zipper(done) {
 const cssWatcher = () => watch('assets/css/**', css);
 const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
 const watcher = parallel(cssWatcher, hbsWatcher);
-const build = series(css, img, js);
+const build = series(css, img, font, js);
 
 exports.build = build;
 exports.zip = series(build, zipper);

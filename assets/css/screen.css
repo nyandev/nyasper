@@ -28,6 +28,14 @@ production stylesheet in assets/built/screen.css
 /* Import CSS reset and base styles */
 @import "global.css";
 
+@font-face {
+    font-family: 'sui_generis_bk';
+    src: url('sui_generis_bk-webfont.woff2') format('woff2'),
+         url('sui_generis_bk-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
 
     /* Colours */
@@ -86,7 +94,7 @@ production stylesheet in assets/built/screen.css
     margin: 0 auto;
     max-width: 1200px;
     width: 100%;
-    padding: 0 3rem;
+    /*padding: 0 3rem;*/
 }
 
 main > .inner {
@@ -95,7 +103,8 @@ main > .inner {
     background: rgba(0, 0, 0, 0.65);
 }
 
-.neonya-wrap__post {
+.neonya-wrap__post,
+.neonya-wrap__page {
     background: rgba(0, 0, 0, 0.65);
 }
 
@@ -137,6 +146,7 @@ main > .inner {
 }
 
 body:not(.has-cover) .site-header-content:not(.left-aligned) {
+    padding-top: max(4.8vmin,24px);
     padding-bottom: max(4.8vmin, 24px);
 }
 
@@ -201,10 +211,13 @@ body:not(.has-cover) .site-header-content:not(.left-aligned) {
 .site-description {
     display: inline-block;
     z-index: 10;
-    max-width: 560px;
-    font-size: 2.4rem;
-    font-weight: 500;
+    /*max-width: 560px;*/
+    font-family: "sui_generis_bk";
+    text-transform: uppercase;
+    font-size: 3.4rem;
+    font-weight: normal;
     line-height: 1.4;
+    text-shadow: 0px 2px 5px black, 0px 2px 2px black;
 }
 
 :is(.site-logo, .site-title) + .site-description {
@@ -236,6 +249,10 @@ body:not(.has-cover) .site-header-content:not(.left-aligned) {
 }
 
 @media (max-width: 767px) {
+    .site-content .outer,
+    .site-footer .outer {
+        padding: 0;
+    }
     .has-cover .site-header-content {
         min-height: 240px;
     }
@@ -659,7 +676,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
     display: grid;
     gap: 4.8vmin 4vmin;
     grid-template-columns: repeat(6, 1fr);
-    padding: max(4.8vmin, 36px) 0 0;
+    padding: max(4.8vmin, 36px);
 }
 
 :is(.tag-template, .author-template) .post-feed {
@@ -723,8 +740,8 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner::after {
     height: 100%;
     background: var(--color-lightgrey) no-repeat center center;
     object-fit: cover;
-    border: 1px solid #ff744175;
-    border-radius: 3px;
+    /*border: 1px solid #ff744175;
+    border-radius: 3px;*/
 }
 
 .post-card.keep-ratio:not(.post-card-large):not(.post-card-full) .post-card-image {
@@ -985,7 +1002,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 }
 
 .page-template .article {
-    padding-top: max(6vmin, 64px);
+    /*padding-top: max(6vmin, 64px);*/
     min-height: calc(100vh - 100px);
     box-sizing: border-box;
 }
@@ -1289,12 +1306,13 @@ make sure they look good, and are given a bit of extra spacing. */
 /* Add extra margin before/after any cards,
 except for when immediately preceeded by a heading */
 .gh-content :not(.kg-card):not([id]) + .kg-card {
-    margin-top: 6vmin;
-    margin-bottom: 0;
+    /*margin-top: 6vmin;
+    margin-bottom: 0vmin;*/
 }
+
 .gh-content .kg-card + :not(.kg-card) {
     margin-top: 6vmin;
-    margin-bottom: 0;
+    margin-bottom: 6vmin;
 }
 
 /* This keeps small embeds centered */
@@ -1339,6 +1357,29 @@ except for when immediately preceeded by a heading */
     font-family: var(--neonya-body-family);
 }
 
+.kg-header-card.kg-size-small {
+    padding-top: 4vmin !important;
+    padding-bottom: 4vmin !important;
+    margin-bottom: 6vmin !important;
+    min-height: 20vh !important;
+    border-top: 1px solid #00eaff4a;
+    border-bottom: 1px solid #00eaff4a;
+}
+.kg-header-card.kg-style-accent {
+    background: linear-gradient(175deg, #6509df45 30%, #ff006ab8 100%) !important;
+}
+
+.page-upcoming-events .article-header,
+.page-past-events .article-header,
+.page-about .article-header {
+    padding-bottom: max(6vmin,4rem);
+}
+.page-upcoming-events .article-header .article-title,
+.page-past-events .article-header .article-title,
+.page-about .article-header .article-title {
+    font-size: 8rem !important;
+    text-align: center !important;
+}
 
 /* Captions */
 figcaption {
@@ -1686,6 +1727,17 @@ iframe.instagram-media + script + :not([id]) {
     }
 }
 
+@media (max-width: 640px) {
+    .kg-header-card.kg-size-small h2.kg-header-card-header {
+        font-size: 2em !important;
+    }
+    .page-past-events .article-header .article-title,
+    .page-upcoming-events .article-header .article-title,
+    .page-about .article-header .article-title {
+        font-size: 6rem !important;
+    }
+}
+
 /* 9. Error Template
 /* ---------------------------------------------------------- */
 
@@ -1757,8 +1809,9 @@ iframe.instagram-media + script + :not([id]) {
 /* ---------------------------------------------------------- */
 
 .site-footer {
-    padding-top: 48px;
-    padding-bottom: max(6vmin, 32px);
+    /*padding-top: 48px;
+    padding-bottom: max(6vmin, 32px);*/
+    padding: 5rem;
     color: #fff;
     background: color-mod(var(--color-darkgrey) l(-5%));
     border-top: 1px solid rgba(0, 130, 141, 0.5);
@@ -1910,8 +1963,8 @@ html.dark-mode .author-profile-social-link:hover {
 }
 
 html.dark-mode .article-title {
-    color: #fff;
-    text-shadow: rgb(1 184 186) 0px 2px 1px;
+    color: white !important;
+    text-shadow: rgb(1 184 186) 0px 3px 1px;
 }
 
 html.dark-mode .article-excerpt {
@@ -2029,6 +2082,8 @@ html.dark-mode .kg-header-card.kg-style-light {
 html.dark-mode .kg-header-card h2.kg-header-card-header,
 html.dark-mode .kg-header-card h3.kg-header-card-subheader {
     color: #fff;
+    font-family: "sui_generis_bk";
+    text-shadow: 0px 3px 0px #000000;
 }
 
 html.dark-mode .footer-cta-title {
@@ -2226,4 +2281,13 @@ html.dark-mode .footer-cta-title {
 ::selection {
     background-color: #e31e86 !important;
     /* color: #ffffff !important; */
+}
+.gh-portal-popup-background {
+    background: linear-gradient(315deg , rgb(104 39 0 / 54%) 0%, rgb(16 18 213 / 24%) 100%) !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+}
+
+.gh-portal-powered a {
+    display: none !important;
 }
