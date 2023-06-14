@@ -145,6 +145,14 @@ main > .inner {
     color: #fff;
 }
 
+.site-header-extra {
+    padding: 0.4rem 0;
+    margin-bottom: -3rem;
+    margin-top: 3rem;
+    background: rgba(0,0,0,.65);
+    box-shadow: 0 2px 16px 3px rgba(0,178,187,.76);
+}
+
 body:not(.has-cover) .site-header-content:not(.left-aligned) {
     padding-top: max(4.8vmin,24px);
     padding-bottom: max(4.8vmin, 24px);
@@ -1310,10 +1318,10 @@ except for when immediately preceeded by a heading */
     margin-bottom: 0vmin;*/
 }
 
-.gh-content .kg-card + :not(.kg-card) {
+/*.gh-content .kg-card + :not(.kg-card) {
     margin-top: 6vmin;
     margin-bottom: 6vmin;
-}
+}*/
 
 /* This keeps small embeds centered */
 .kg-embed-card {

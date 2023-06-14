@@ -32,11 +32,15 @@ into the {body} of the default.hbs template --}}
             {{#if @site.description}}
                 <p class="site-description">{{@site.description}}</p>
             {{/if}}
+            <div class="site-header-extra">
+                <div class="gh-content">
+                    <p>Join our <a href="https://discord.gg/neonya" target="_blank">Discord server here</a> for our awesome community!</p>
+                </div>
+            </div>
         </div>
     {{/match}}
 
 </div>
-
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
 <div class="inner posts">
