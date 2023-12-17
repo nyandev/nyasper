@@ -2,7 +2,7 @@
     "name": "nyasper",
     "description": "Hack of ghost's casper theme for neonya.party",
     "demo": "https://neonya.party",
-    "version": "5.2.3",
+    "version": "5.7.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -43,11 +43,11 @@
         "url": "https://github.com/nyandev/nyasper.git"
     },
     "devDependencies": {
-        "@tryghost/release-utils": "0.8.0",
+        "@tryghost/release-utils": "0.8.1",
         "autoprefixer": "10.4.7",
         "beeper": "2.1.0",
         "cssnano": "5.1.12",
-        "gscan": "4.31.2",
+        "gscan": "4.36.1",
         "gulp": "4.0.2",
         "gulp-concat": "2.6.1",
         "gulp-livereload": "4.0.2",
@@ -87,6 +87,15 @@
         },
         "card_assets": true,
         "custom": {
+            "navigation_layout": {
+                "type": "select",
+                "options": [
+                    "Logo on cover",
+                    "Logo in the middle",
+                    "Stacked"
+                ],
+                "default": "Logo on cover"
+            },
             "title_font": {
                 "type": "select",
                 "options": [
@@ -116,11 +125,6 @@
                     "Hidden"
                 ],
                 "default": "Center aligned",
-                "group": "homepage"
-            },
-            "show_logo_in_navigation": {
-                "type": "boolean",
-                "default": false,
                 "group": "homepage"
             },
             "feed_layout": {
@@ -169,8 +173,5 @@
         "extends": [
             "@tryghost:theme"
         ]
-    },
-    "dependencies": {
-        "fslightbox": "^3.3.1"
     }
 }

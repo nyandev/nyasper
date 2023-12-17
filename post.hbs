@@ -36,11 +36,11 @@ into the {body} tag of the default.hbs template --}}
                 {{#foreach authors}}
                 <li class="author-list-item">
                     {{#if profile_image}}
-                    <a href="{{url}}" class="author-avatar">
+                    <a href="{{url}}" class="author-avatar" aria-label="Read more of {{name}}">
                         <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
                     </a>
                     {{else}}
-                    <a href="{{url}}" class="author-avatar author-profile-image">{{> "icons/avatar"}}</a>
+                    <a href="{{url}}" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>
                     {{/if}}
                 </li>
                 {{/foreach}}
@@ -86,26 +86,11 @@ into the {body} tag of the default.hbs template --}}
         {{content}}
     </section>
 
-    <section class="article-comments gh-canvas">
-        {{#if access}}
-            <div id="disqus_thread"></div>
-            <script>
-                var disqus_config = function () {
-                    this.page.url = "{{url absolute="true"}}";
-                    this.page.identifier = "ghost-{{comment_id}}"
-                };
-                (function() {
-                var d = document, s = d.createElement('script');
-                s.src = 'https://neonya-party.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-        {{else}}
-            <p>You're missing out on the conversation. Become a member and join in.</p>
-            <a href="#/portal/">Subscribe</a>
-        {{/if}}
-    </section>
+    {{#if comments}}
+        <section class="article-comments gh-canvas">
+            {{comments}}
+        </section>
+    {{/if}}
 
 </article>
 </main>
@@ -113,6 +98,7 @@ into the {body} tag of the default.hbs template --}}
 {{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
 {{#if @site.members_enabled}}
 {{#unless @member}}
+{{#unless @site.comments_enabled}}
 {{#if access}}
     <section class="footer-cta outer">
         <div class="inner">
@@ -121,11 +107,10 @@ into the {body} tag of the default.hbs template --}}
                 <div class="footer-cta-input">Enter your email</div>
                 <span>Subscribe</span>
             </a>
-            {{!-- ^ This looks like a form element, but it's just a link to Portal,
-            making the form validation and submission much simpler. --}}
         </div>
     </section>
 {{/if}}
+{{/unless}}
 {{/unless}}
 {{/if}}
 

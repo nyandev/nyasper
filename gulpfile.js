@@ -79,8 +79,7 @@ function js(done) {
         src([
             // pull in lib files first so our own code can depend on it
             'assets/js/lib/*.js',
-            'assets/js/*.js',
-            `./node_modules/fslightbox/index.js`,
+            'assets/js/*.js'
         ], {sourcemaps: true}),
         concat('nyasper.js'),
         uglify(),
@@ -107,8 +106,9 @@ function zipper(done) {
 }
 
 const cssWatcher = () => watch('assets/css/**', css);
+const jsWatcher = () => watch('assets/js/**', js);
 const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
-const watcher = parallel(cssWatcher, hbsWatcher);
+const watcher = parallel(cssWatcher, jsWatcher, hbsWatcher);
 const build = series(css, img, font, js);
 
 exports.build = build;
